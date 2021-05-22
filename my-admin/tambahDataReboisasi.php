@@ -7,17 +7,30 @@ require '../functions.php';
 // $result = getAllData('bibit');
 
 // cek jika tombol submit sudah ditekan
-if( isset($_POST['submit']) )
+if( isset($_POST['submit']) ) 
 {
+	// var_dump($_POST);
+	// die();
+
     $result = reboisasi($_POST);
-    global $conn;
-    if( mysqli_affected_rows($conn) ) 
-    {
-        $notifikasi = true;
-        echo "
-        <meta content='2; url=reboisasi.php' http-equiv='refresh'>
-        ";
+
+    if ( $result > 0 ) {
+    	echo "Berhasil " . $result;
+    	die();
+    } else {
+    	echo "Tidak berhasil " . $result;
+    	die();
     }
+
+    // global $conn;
+
+    // if( mysqli_affected_rows($conn) ) 
+    // {
+    //     $notifikasi = true;
+    //     echo "
+    //     <meta content='2; url=reboisasi.php' http-equiv='refresh'>
+    //     ";
+    // }
 }
 ?>
 
@@ -28,15 +41,7 @@ if( isset($_POST['submit']) )
 	<hr>
 
 	<!-- notifiksi sukeses -->
-	<?php if( @$notifikasi == true ) : ?>
-    <div class="row">
-        <div class="col">
-            <div class="alert alert-success" role="alert">
-              Tambah data <strong>berhasil!</strong>
-            </div>
-        </div>  
-    </div>
-    <?php endif; ?>
+
 	<!-- akhir -->
 
 	<!-- content -->

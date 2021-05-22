@@ -71,3 +71,5 @@ require "../functions.php";
   </div>
 </div>
 <!-- /.container-fluid -->
+
+<?php require_once 'templates/footer.php'; ?>

@@ -10,7 +10,7 @@
   // }
   
 // hubungkan ke halaman header
-  require "templates/header.php";
+require_once "templates/header.php";
 // akhir
 
 // hubungkan ke halaman functions
@@ -85,7 +85,7 @@
             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pengaduan Hari ini</div>
             <div class="row no-gutters align-items-center">
               <div class="col-auto">
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><!-- <?= $num; ?> --></div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">10000</div>
               </div>
             </div>
           </div>
@@ -96,6 +96,3 @@
       </div>
     </div>
 </div>
-
-
-<?php require "templates/footer.php" ?>

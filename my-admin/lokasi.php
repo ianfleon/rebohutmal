@@ -9,18 +9,22 @@
 //   }
 
 // tambahkan file header
-require "templates/header.php";
+require_once "templates/header.php";
 
 // tambahkan file function
-require "../functions.php";
+require_once "../functions.php";
 
 // cek jika tombol submit sudah ditekan
 if( isset($_POST['submit']) ) {
-  $result = tambahDataHutan($_POST, 'lokasi_dan_info_hutan');
-  $notifikasi = true;
+
+  $result = tambahDataHutan($_POST);
+
+  // $notifikasi = true;
+
   echo "
   <meta content='1; url=lokasi.php' http-equiv='refresh'>
   ";
+
 }
 
 // ambil data hutan dari database
@@ -56,6 +60,7 @@ $dataHutan = getAllData('lokasi_dan_info_hutan');
   <?php endif; ?>
   <div class="row">
     <div class="col-md">
+
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
        <i class="fas fa-plus"></i> Tambah data hutan
@@ -80,7 +85,7 @@ $dataHutan = getAllData('lokasi_dan_info_hutan');
                 <div class="form-group">
                   <label for="namaHutan">Nama hutan</label>
                   <select class="form-control" id="exampleFormControlSelect1" name="namaHutan">
-                    <option>-- pilih hutan lindung --</option>
+                    <option>-- Pilih Hutan Lindung --</option>
                     <option value="HL Gn Tipukekene">HL Gn Tipukekene</option>
                     <option value="HL Nakabata">HL Nakabata</option>
                     <option value="HL Gunung Kuluala">HL Gunung Kuluala</option>
@@ -94,12 +99,12 @@ $dataHutan = getAllData('lokasi_dan_info_hutan');
                   <small id="emailHelp" class="form-text text-muted">*wajib diisi.</small>
                 </div>
                 <div class="form-group">
-                  <label for="link">Link hutan lindung</label>
+                  <label for="link">Link Hutan Lindung</label>
                   <textarea name="link" class="form-control"></textarea>
                   <small id="emailHelp" class="form-text text-muted">*link maps hutan.</small>
                 </div>
                 <div class="form-group">
-                  <label for="info">Informasi hutan lindung</label>
+                  <label for="info">Informasi Hutan Lindung</label>
                   <input type="text" class="form-control" id="info" name="info">
                   <small id="emailHelp" class="form-text text-muted">*wajib diisi.</small>
                 </div>
@@ -150,5 +155,5 @@ $dataHutan = getAllData('lokasi_dan_info_hutan');
   </div>
 </div>
 <!-- /.container-fluid -->
-<?php require "templates/footer.php" ?>
 
+<?php require_once 'templates/footer.php'; ?>
