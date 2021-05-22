@@ -6,8 +6,10 @@ require "functions.php";
 // cek jika tombol kirim sudah ditekan, jalankan function
 if( isset($_POST['submit']) )
 {
-    $result = reboisasi($_POST);
     global $conn;
+
+    $result = reboisasi($_POST);
+    
     if( mysqli_affected_rows($conn) ) 
     {
         $notifikasi = true;
@@ -39,7 +41,7 @@ if( isset($_POST['submit']) )
         <div class="mb-3">
             <label for="nama_hutan" class="form-label">Nama Hutan</label>
             <select class="form-control" id="exampleFormControlSelect1" name="namaHutan">
-                <option>-- pilih hutan lindung --</option>
+                <option>-- Pilih Hutan Lindung --</option>
                 <option value="HL Gn Tipukekene">HL Gn Tipukekene</option>
                 <option value="HL Nakabata">HL Nakabata</option>
                 <option value="HL Gunung Kuluala">HL Gunung Kuluala</option>
@@ -57,8 +59,8 @@ if( isset($_POST['submit']) )
                 <tr>
                     <td>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="jenisBibit[]" value="kayu merah">
-                            <label class="form-check-label" for="exampleCheck1">Kayu merah</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="jenisBibit[]" value="kayu Merah">
+                            <label class="form-check-label" for="exampleCheck1">Kayu Merah</label>
                         </div>
 
                         <div class="form-group form-check">
@@ -73,8 +75,8 @@ if( isset($_POST['submit']) )
                             <label class="form-check-label" for="exampleCheck3">Makila</label>
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck4" name="jenisBibit[]" value="Nani air">
-                            <label class="form-check-label" for="exampleCheck4">Nani air</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck4" name="jenisBibit[]" value="Nani Air">
+                            <label class="form-check-label" for="exampleCheck4">Nani Air</label>
                         </div>
                     </td>
                     <td>
@@ -93,8 +95,8 @@ if( isset($_POST['submit']) )
                     <td>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck7" name="jenisBibit[]" value="Manggis hutan">
-                            <label class="form-check-label" for="exampleCheck7">Manggis hutan</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck7" name="jenisBibit[]" value="Manggis Hutan">
+                            <label class="form-check-label" for="exampleCheck7">Manggis Hutan</label>
                         </div>
 
                         <div class="form-group form-check">
@@ -106,8 +108,8 @@ if( isset($_POST['submit']) )
                     <td>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck9" name="jenisBibit[]" value="Kayu burung">
-                            <label class="form-check-label" for="exampleCheck9">Kayu burung</label>
+                            <input type="checkbox" class="form-check-input" id="exampleCheck9" name="jenisBibit[]" value="Kayu Burung">
+                            <label class="form-check-label" for="exampleCheck9">Kayu Burung</label>
                         </div>
 
                         <div class="form-group form-check">
@@ -119,19 +121,24 @@ if( isset($_POST['submit']) )
                 </tr>
             </table>
     </div>
-    <div class="mb-3 col-md-2">
+    <div class="mb-3 col-md-4">
         <label for="jumlah_tanaman" class="form-label">Jumlah Bibit</label>
         <input type="number" class="form-control" id="jumlah_tanaman" value="number" name="jumlahBibit">
         <div class="form-text">Jumlah bibit yang dibutuhkan.</div>
     </div>
-    <div class="mb-5">
+    <div class="mb-3">
         <label for="jenisKerusakan" class="form-label">Jenis Kerusakan</label>
         <select class="form-select" aria-label="Default select example" name="jenisKerusakan" id="jenisKerusakan">
-            <option selected>-- Pilih jenis kerusakan --</option>
+            <option selected>-- Pilih Jenis Kerusakan --</option>
             <option value="Kebakaran">Kebakaran</option>
-            <option value="Penebangan liar">Penebangan liar</option>
+            <option value="Penebangan liar">Penebangan Liar</option>
         </select>
-    </div>    
+    </div>
+    <div class="mb-3">
+            <label for="tanggal" class="form-label">Tanggal</label>
+            <input type="date" class="form-control col-md-2" id="tanggal" name="tanggal">
+            <div class="small text-grey">*tanggal pengiriman data</div>
+        </div>   
     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
 </form>
 

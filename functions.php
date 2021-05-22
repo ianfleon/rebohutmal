@@ -48,6 +48,7 @@ function kontak($data, $namaTabel) {
 	
 	$result = mysqli_query($conn, "INSERT INTO $namaTabel VALUES 
 		(null, '$nama', '$email', '$pesan', '$tanggal') ");
+	
 	return $result;
 }
 // akhir function tambah data

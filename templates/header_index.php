@@ -23,32 +23,35 @@
 <!-- Header -->
 <div class="alas">
 
-    <!-- Img Header -->
-    <img src="assets/img/img-hero.jpg" alt="Header Photo">
-    <div class="layer-hitam"></div>
+<!-- Img Header -->
+<img src="assets/img/img-hero.jpg" alt="Header Photo">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navku">
+<div class="layer-hitam"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navku">
+
     <div class="container">
         <a class="navbar-brand" href="index.php">REBOHUTMAL</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Beranda</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="lokasi.php?title=Lokasi Hutan Lindung">Lokasi</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="reboisasi.php?title=Reboisasi">Reboisasi</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="kontak.php?title=Kontak">Kontak</a>
-            </li>
-        </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="lokasi.php">Lokasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="reboisasi.php">Reboisasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="kontak.php">Kontak</a>
+                </li>
+            </ul>
         </div>
     </div>
-    </nav>
+</nav>

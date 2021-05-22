@@ -1,3 +1,13 @@
+<?php
+
+$title = $_SERVER['REQUEST_URI'];
+$title = explode('/', $title);
+$title = $title[count($title) - 1];
+$title = substr($title, 0, strpos($title, '.php'));
+$title[0] = strtoupper($title);
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,7 +33,7 @@
 <!-- CSS -->
 <link rel="stylesheet" href="style.css">
 
-<title>Rebohutmal | <?= $_GET['title']; ?></title>
+<title><?= $title ?> | Rebohutmal</title>
 </head>
 <body>
     
@@ -40,13 +50,13 @@
             <a class="nav-link active" aria-current="page" href="index.php">Beranda</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="lokasi.php?title=Lokasi Hutan Lindung">Lokasi</a>
+            <a class="nav-link" href="lokasi.php">Lokasi</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="reboisasi.php?title=Reboisasi">Reboisasi</a>
+            <a class="nav-link" href="reboisasi.php">Reboisasi</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="kontak.php?title=Kontak">Kontak</a>
+            <a class="nav-link" href="kontak.php">Kontak</a>
             </li>
         </ul>
         </div>
