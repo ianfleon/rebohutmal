@@ -7,9 +7,6 @@ require '../functions.php';
 $dataReboisasi = getAllData('reboisasi');
 // akhir
 
-
-
-
 ?>
 
 <!-- Begin Page Content -->
@@ -20,7 +17,7 @@ $dataReboisasi = getAllData('reboisasi');
     <hr>
     <div class="row">
         <div class="col-md">
-            <a href="tambahDataReboisasi.php" class="btn btn-primary" id="tambahDataReboisasi"><i class="fas fa-plus"></i> Tambah Data</a>
+            <a href="form-reboisasi.php" class="btn btn-primary" id="tambahDataReboisasi"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
     </div>
 
@@ -70,10 +67,10 @@ $dataReboisasi = getAllData('reboisasi');
                                 <td><?= $dr['jumlah_bibit']; ?></td>
                                 <td><?= $dr['tanggal']; ?></td>
                                 <td class="text-center">
-                                    <a href="hapus.php?id=<?= $dr['id'] ?>&table=reboisasi" class="btn btn-warning btn-sm" onclick="return confirm('Hapus?')"><i class="fas fa-trash-restore"></i> hapus</a>
+                                    <a href="hapus.php?id=<?= $dr['id'] ?>&table=reboisasi" class="btn btn-warning btn-sm" onclick="return confirm('Hapus?')"><i class="fas fa-trash-restore"></i> Hapus</a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="pengembangan.php" class="btn btn-primary btn-sm"><i class="far fa-edit"></i> ubah</a>
+                                    <a href="form-reboisasi.php?edit=<?= $dr['id'] ?>" class="btn btn-primary btn-sm"><i class="far fa-edit"></i> Ubah</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

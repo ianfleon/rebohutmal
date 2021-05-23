@@ -55,7 +55,7 @@
 <!-- <script src="assets/vendor/js/sb-admin-2.min.js"></script> -->
 
 <!-- Scriptku -->
-<!-- <script src="assets/my-js/script.js"></script> -->
+<script src="assets/my-js/script.js"></script>
 
 </body>
 </html>
