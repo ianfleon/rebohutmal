@@ -1,10 +1,6 @@
-// console.log("Hai");
-
 const btnUbahLokasi = document.querySelectorAll('#btn-ubah-lokasi');
 const modalLokasi = document.getElementById('modal-lokasi');
 const linkMaps = document.getElementById('link-maps');
-
-const maps = document.querySelector('#maps iframe');
 
 btnUbahLokasi.forEach((btn) => {
 
@@ -19,9 +15,4 @@ btnUbahLokasi.forEach((btn) => {
 
 	});
 
-});
-
-
-linkMaps.addEventListener('click', () => {
-	alert('Ha');
 });

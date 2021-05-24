@@ -19,11 +19,13 @@ require "../functions.php";
 //ambil seluruh data kontak masuk dari user
 $result = getAllData('kontak');
 
+$total = count($result);
+
 //  cari data kontak
 if( isset($_POST['cari']) ) {
     $keyword = htmlspecialchars($_POST['keyword']);
-    $data = cari("kontak", $keyword);
-    $r = mysqli_fetch_assoc($data);
+    $r = mysqli_fetch_assoc(cari("kontak", $keyword));
+    $total = count($r);
 }
  
 ?>
@@ -40,7 +42,7 @@ if( isset($_POST['cari']) ) {
           <div class="input-group mb-1">
             <input type="text" class="form-control" placeholder="masukan nama pengirim pesan..." name="keyword" autofocus="on" autocomplete="off">
             <div class="input-group-append">
-              <button  type="submit" class="btn btn-outline-success" name="cari" id="button-addon2">cari</button>
+              <button  type="submit" class="btn btn-outline-success" name="cari" id="button-addon2">Cari</button>
             </div>
           </div>
         </form>
@@ -50,7 +52,7 @@ if( isset($_POST['cari']) ) {
   <!-- jumlah data yang ditampilkan -->
     <div class="row mt-2">
       <div class="col-md-3">
-        <p class="pl-1 table-bordered">Total Data : <!-- <?= $num; ?> --><span class="text-primary"></p>
+        <p>Total Data : <?= ($total != null) ? $total : "-" ?><span class="text-primary"></p>
       </div>
     </div>
   <!-- tampilkan pesan tidak ada pengaduan terbaru -->
@@ -69,7 +71,7 @@ if( isset($_POST['cari']) ) {
       <div class="col-md-12">
         <table class="table table-hover">
         <thead>
-          <tr class="text-center">
+          <tr>
             <th scope="col">NO</th>
             <th scope="col">NAMA PENGIRIM</th>
             <th scope="col">EMAIL PENGIRIM</th>
@@ -79,10 +81,10 @@ if( isset($_POST['cari']) ) {
           </tr>
         </thead>
         <tbody>
-          <?php if( isset($_POST['cari'] )  ): ?>
+          <?php if( isset($_POST['cari'] ) ): ?>
           <div class="row">
           	<div class="col-sm-3 mb-2">
-          		<a href="pengaduan.php" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left"></i> Kembali</a>
+          		<a href="kontak.php" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left"></i> Kembali</a>
           	</div>
           </div>
           <tr>
@@ -101,9 +103,7 @@ if( isset($_POST['cari']) ) {
             <td><?= $row['email'] ?></td>
             <td><?= $row['pesan'] ?></td>
             <td><?= $row['tanggal'] ?></td>
-            
-            <td>
-              <a href="hapus.php?id=<?= $row['id'] ?>&table=kontak" class="btn btn-warning  btn-sm float-right" onclick="return confirm('Hapus?')"><i class="fa fa-fw fa-trash"></i> hapus</a>
+            <td><a href="hapus.php?id=<?= $row['id'] ?>&table=kontak" class="btn btn-warning  btn-sm float-right" onclick="return confirm('Hapus?')"><i class="fa fa-fw fa-trash"></i> Hapus</a>
             </td>
           </tr>
           <?php $noUrut++; ?>

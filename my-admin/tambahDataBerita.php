@@ -26,26 +26,26 @@ if (isset($_POST['submit'])) {
 		<div class="form-group">
 		    <label for="foto">Foto</label>
 		    <input type="file" class="form-control col-md-3" id="foto" name="img-cover">
-		    <small id="emailHelp" class="form-text text-muted">*tanggal penulisan berita</small>
+		    <small id="emailHelp" class="form-text text-muted">*Gambar cover berita (thumbnail).</small>
 		</div>
 		<div class="form-group">
 		    <label for="tanggal">Tanggal</label>
 		    <input type="date" class="form-control col-md-2" id="tanggal" name="tanggal">
-		    <small id="emailHelp" class="form-text text-muted">*tanggal penulisan berita</small>
+		    <small id="emailHelp" class="form-text text-muted">*Tanggal penulisan berita.</small>
 		</div>
 		<div class="form-group">
 		    <label for="judul">Judul berita</label>
 		    <input type="text" class="form-control" id="judul" name="judul">
-		    <small id="emailHelp" class="form-text text-muted">*judul berita</small>
+		    <small id="emailHelp" class="form-text text-muted">*Judul berita</small>
 		</div>
 		<div class="form-group">
 		    <label for="isi-berita">Isi berita</label>
 		    <textarea class="form-control" id="isi-berita" name="isi-berita"></textarea>
-		    <small id="emailHelp" class="form-text text-muted">*isi berita</small>
+		    <small id="emailHelp" class="form-text text-muted">*Konten</small>
 		</div>
 		<div class="button mb-5">
 			<button name="submit" type="submit" class="btn btn-primary">Publikasikan</button>
-			<a href="berita.php" class="btn btn-danger" onclick="return confirm('buang perubahan?')">Batal</a>
+			<a href="berita.php" class="btn btn-danger" onclick="return confirm('Buang perubahan?')">Batal</a>
 		</div>
 	</form>
 </div>

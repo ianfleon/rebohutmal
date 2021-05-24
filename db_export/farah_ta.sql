@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2021 at 07:31 AM
+-- Generation Time: May 24, 2021 at 01:25 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -63,6 +63,13 @@ CREATE TABLE `kontak` (
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kontak`
+--
+
+INSERT INTO `kontak` (`id`, `nama`, `email`, `pesan`, `tanggal`) VALUES
+(1, 'Budi', 'budi@gmail.com', 'Tolong lihat hutan saya di seram pak!', '2021-05-24');
+
 -- --------------------------------------------------------
 
 --
@@ -95,7 +102,8 @@ CREATE TABLE `lokasi_dan_info_hutan` (
 --
 
 INSERT INTO `lokasi_dan_info_hutan` (`id`, `nama_hutan_lindung`, `link_maps`, `info`) VALUES
-(8, 'HL Gn Tipukekene', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2038928.3957937371!2d128.7619917640625!3d-3.5221550179945167!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d6ceb72d255d343%3A0x69ff574b116c5785!2sKabupaten%20Maluku%20Tengah%2C%20Maluku!5e0!3m2!1sid!2sid!4v16197', 'oke');
+(9, 'HL Gn Tipukekene', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2038609.925108798!2d127.88678963161705!3d-3.664672866055733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d6ceb72d255d343%3A0x69ff574b116c5785!2sKabupaten%20Maluku%20Tengah%2C%20Maluku!5e0!3m2!1sid!2sid!4v1621748078058!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', 'Segera'),
+(11, 'HL Gunung Kalapain', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2038609.925108798!2d127.88678963161705!3d-3.664672866055733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d6ceb72d255d343%3A0x69ff574b116c5785!2sKabupaten%20Maluku%20Tengah%2C%20Maluku!5e0!3m2!1sid!2sid!4v1621748078058!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', 'Wajib');
 
 -- --------------------------------------------------------
 
@@ -117,8 +125,7 @@ CREATE TABLE `reboisasi` (
 --
 
 INSERT INTO `reboisasi` (`id`, `nama_hutan`, `jenis_bibit`, `jumlah_bibit`, `jenis_kerusakan`, `tanggal`) VALUES
-(3, 'HL Gn Tipukekene', 'kayu merah', 150, 'Penebangan liar', '2021-05-01'),
-(4, 'HL Gn Tipukekene', 'Bintanggur', 150, 'Penebangan liar', '2021-05-01');
+(6, 'HL Gunung Kalapain', 'Kayu Merah', 10, 'Penebangan Liar', '2021-05-24');
 
 --
 -- Indexes for dumped tables
@@ -168,7 +175,7 @@ ALTER TABLE `bibit`
 -- AUTO_INCREMENT for table `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lokasi`
@@ -180,13 +187,13 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `lokasi_dan_info_hutan`
 --
 ALTER TABLE `lokasi_dan_info_hutan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `reboisasi`
 --
 ALTER TABLE `reboisasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

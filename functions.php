@@ -1,16 +1,23 @@
 <?php  
 
 // koneksi ke database
-$conn = mysqli_connect("localhost", "ian", "ian", "farah_ta");
+$conn = mysqli_connect("localhost", "root", "", "farah_ta");
 // akhir koneksi
 
 // functions getAllData >> untuk mengambil seluruh data;
-function getAllData($namaTabel) {
+function getAllData($namaTabel, $id = null) {
 
 	global $conn;
 
-	$result = mysqli_query($conn, "SELECT * FROM $namaTabel");
+	$query =  "SELECT * FROM $namaTabel";
+
 	$rows = [];
+
+	if ($id != null) {
+		$query = "SELECT * FROM $namaTabel WHERE id = '$id'";
+	}
+
+	$result = mysqli_query($conn, $query);
 
 	while ( $row = mysqli_fetch_assoc($result) ) {
 		$rows[] = $row;
@@ -73,33 +80,33 @@ function tambahDataHutan($data) {
 // akhir function tambah data
 
 /* function tambah data > untuk memasukan data ke database */
-function reboisasi($data) {
+// function reboisasi($data) {
 	
-	global $conn;
+// 	global $conn;
 
-	$namaHutan = $data['namaHutan'];
-	$jenisKerusakan = $data['jenisKerusakan'];
-	$jumlahBibit = $data['jumlahBibit'];
-	$jenisBibit = $data['jenisBibit'];
-	$tanggal = $data['tanggal'];
+// 	$namaHutan = $data['namaHutan'];
+// 	$jenisKerusakan = $data['jenisKerusakan'];
+// 	$jumlahBibit = $data['jumlahBibit'];
+// 	$jenisBibit = $data['jenisBibit'];
+// 	$tanggal = $data['tanggal'];
 
-	$jumlahBibitYgDipilih = count($jenisBibit);
+// 	$jumlahBibitYgDipilih = count($jenisBibit);
 
-	$c = 0;
+// 	$c = 0;
 
-	for($x=0; $x<$jumlahBibitYgDipilih; $x++){
+// 	for($x=0; $x<$jumlahBibitYgDipilih; $x++){
 
-		$q = mysqli_query($conn,
-			"INSERT INTO reboisasi VALUES
-			(null, '$namaHutan', '$jenisBibit[$x]', '$jumlahBibit', '$jenisKerusakan', '$tanggal')
-		");
+// 		$q = mysqli_query($conn,
+// 			"INSERT INTO reboisasi VALUES
+// 			(null, '$namaHutan', '$jenisBibit[$x]', '$jumlahBibit', '$jenisKerusakan', '$tanggal')
+// 		");
 
-		if ( $q ) { $c = $c + 1; }
+// 		if ( $q ) { $c = $c + 1; }
 
-	}
+// 	}
 
-	return $c;
-}
+// 	return $c;
+// }
 // akhir function tambah data
 
 // function hapus >> untuk menghapus data berdasarkan id yang dikirm
@@ -116,20 +123,3 @@ function cari($namaTabel,$keyword) {
 	return $result;
 }
 // akhir function cari
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
