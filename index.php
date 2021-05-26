@@ -36,7 +36,7 @@ $berita = my_query_get("SELECT * FROM berita");
         <?php foreach ($berita as $b) : ?>
         <div class="col-md-4 mb-5">
             <div class="card">
-                <img src="assets/thumbnails/<?= $b['cover_berita'] ?>" class="card-img-top" alt="...">
+                <img src="assets/<?= ($b['cover_berita'] != "") ? "thumbnails/".$b['cover_berita'] : "img/no-image.jpg" ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <a href="berita.php?p=<?= $b['id'] ?>" class="card-title">
                         <?= substr($b['judul_berita'], 0, 50) . "..." ?>

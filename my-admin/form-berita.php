@@ -24,10 +24,20 @@ if ( isset($_GET['edit']) ) {
 	$data = getAllData('berita', $_GET['edit'])[0];
 }
 
+/* Update Berita */
+if (isset($_POST['update'])) {
+	if (berita($_POST, $_FILES, $_GET['edit'], 'ubah')) {
+		$notifikasi = true;
+		header("Refresh: 2; url='berita.php'");
+	}
+}
+
 ?>
 
+<!-- Header -->
 <?php require "templates/header.php"; ?>
 
+<!-- Preview Gambar Cover Berita -->
 <script>
     function preview_image(event) 
     {
@@ -40,10 +50,6 @@ if ( isset($_GET['edit']) ) {
         reader.readAsDataURL(event.target.files[0]);
     }
 </script>
-
-<!-- hubungkan ke ckeditor online CDN -->
-<!-- <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script> -->
-
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -67,11 +73,15 @@ if ( isset($_GET['edit']) ) {
 
 	<!-- form tambah -->
 	<form action="" method="POST" enctype="multipart/form-data">
+
+		<!-- Gambar Sebelumnya (Edit) -->
+		<input type="text" name="gambar-lama" value="<?= (isset($data['cover_berita'])) ? $data['cover_berita'] : "" ?>">
+
 		<div class="form-group">
 		    <img src="" alt="" id="img-cover" class="view-img">
 		    <br>
 		    <label for="foto">Gambar Cover</label>
-		    <input type="file" class="form-control col-md-3" name="img-cover" accept="image/*" onchange="preview_image(event)" required>
+		    <input type="file" class="form-control col-md-3" name="img-cover" accept="image/*" onchange="preview_image(event)">
 		    <small id="emailHelp" class="form-text text-muted">*Gambar cover berita (thumbnail)</small>
 		</div>
 		<div class="form-group">
@@ -85,7 +95,7 @@ if ( isset($_GET['edit']) ) {
 		    <small id="emailHelp" class="form-text text-muted">*Konten</small>
 		</div>
 		<div class="button mb-5">
-			<button name="submit" type="submit" class="btn btn-primary">Publikasikan</button>
+			<button name="<?= (isset($_GET['edit'])) ? "update" : "submit" ?>" type="submit" class="btn btn-primary">Publikasikan</button>
 			<a href="berita.php" class="btn btn-danger" onclick="return confirm('Buang perubahan?')">Batal</a>
 		</div>
 	</form>

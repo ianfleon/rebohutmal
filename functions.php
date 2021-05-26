@@ -153,22 +153,39 @@ function cari($namaTabel, $keyword) {
 // akhir function cari
 
 /* Berita */
-function berita($data, $gambar) {
-
-	$img = uploadGambar($gambar['img-cover']);
+function berita($data, $gambar, $id = null, $cmd = null) {
 
 	$judul = $data['judul'];
 	$isi = $data['isi-berita'];
 	$tanggal = date("Y-m-d");
 
-	if (!$img['status']) {
-		echo "Gagal Upload Berita!";
-		header("Refresh:2, url='berita.php'");
-		die();
+	$cover = $data['gambar-lama'];
+
+	if ($gambar['img-cover']['size'] != 0) {
+		$img = uploadGambar($gambar['img-cover']);
 	}
 
-	$cover = $img['nama_baru'];
+	if (isset($img)) {
+		if (!$img['status']) {			
+			echo "Gagal Upload Berita!";
+			header("Refresh:2, url='berita.php'");
+			die();
+		} else {
+			$cover = $img['nama_baru']; // cover berita
+		}
+	}
+
 	$query = "INSERT INTO berita VALUES (null, '$judul', '$isi', '$tanggal', '$cover')";
+
+	if ($cmd == 'ubah' && $id != null) {
+		$query = "UPDATE berita SET
+			judul_berita = '$judul',
+			isi_berita = '$isi',
+			cover_berita = '$cover'
+			WHERE id = '$id'
+		";
+	}
+
 
 	return my_query($query);
 
