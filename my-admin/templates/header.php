@@ -2,6 +2,17 @@
 // require "../functions.php";
 // $jum = query("pengaduan_user");
 // $num = mysqli_num_rows($jum);
+
+$title = $_SERVER['REQUEST_URI'];
+$title = explode('/', $title);
+$title = $title[count($title) - 1];
+$title = substr($title, 0, strpos($title, '.php'));
+$title[0] = strtoupper($title);
+
+if ($title == 'Index') {
+  $title = "Beranda";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +26,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Admin Rebohutmal</title>
+<title><?= $title ?> | Admin Rebohutmal</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
