@@ -69,8 +69,8 @@
     <ul class="navbar-nav bg-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-        <div class="sidebar-brand-text mx-3">Halaman Admin</div>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/rebohutmal">
+        <div class="sidebar-brand-text mx-3">Rebohutmal</div>
       </a>
 
       <!-- garis horizontal -->
@@ -122,13 +122,13 @@
         </a>
       </li>
       <!-- garis horizontal -->
-      <hr class="sidebar-divider d-none d-md-block">
+     <!--  <hr class="sidebar-divider d-none d-md-block">
       <li class="nav-item">
         <a class="nav-link" href="laporan.php">
           <i class="fas fa-fw fa-print"></i>
           <span>Laporan</span>
         </a>
-      </li>
+      </li> -->
       <!-- garis horizontal -->
       <hr class="sidebar-divider d-none d-md-block">
       <li class="nav-item">

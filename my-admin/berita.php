@@ -50,7 +50,7 @@ $berita = getAllData('berita');
                                 <a href="form-berita.php?edit=<?= $b['id'] ?>" class="btn btn-primary btn-sm"> Ubah</a>
                             </td>
                             <td>
-                                <a href="" class="btn btn-success btn-sm"> Detail</a>
+                                <a href="/rebohutmal/berita.php?p=<?= $b['id'] ?>" class="btn btn-success btn-sm"> Detail</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
