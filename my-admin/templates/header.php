@@ -17,10 +17,12 @@
 
 <title>Admin Rebohutmal</title>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 <!-- Custom fonts for this template-->
 <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-<!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
 <link href="assets/vendor/css/sb-admin-2.min.css" rel="stylesheet">
@@ -29,9 +31,8 @@
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 
 <!-- Bootstrap JS -->
-
-<!-- <script src="assets/jQuery/jquery-file.js"></script>
-<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script> -->
+<script type="text/javascript" src="assets/my-js/jquery.js"></script>
+<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- JQuery File -->
 <!-- <script src="assets/jQuery/jquery-file.js"></script> -->
@@ -40,6 +41,22 @@
 <!-- <link rel="stylesheet" href="assets/bootstrap/date-picker/css/bootstrap-datepicker.min.css"> -->
 <!-- <script src="assets/bootstrap/date-picker/js/bootstrap-datepicker.min.js"></script> -->
 <!-- <script src="assets/bootstrap/date-picker/locales/bootstrap-datepicker.id.min.js"></script> -->
+
+<script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+
+<style>
+  .view-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  ul, li {
+    padding: 0 .5rem;
+    margin: 0;
+  }
+
+</style>
   
 </head>
 

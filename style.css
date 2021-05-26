@@ -87,3 +87,19 @@ body {
 }
 
 .footer .txt-credit { margin: auto; }
+
+/* Berita */
+.berita-card .card-img-top {
+    border-radius: 0;
+    width: 640px;
+    height: auto;
+    /*object-fit: none;*/
+}
+
+.berita-card {
+    height: auto;
+}
+
+.modal-lokasi .modal-dialog {
+    max-width: 60%;
+}

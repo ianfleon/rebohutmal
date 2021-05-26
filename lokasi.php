@@ -32,7 +32,7 @@ $result = getAllData('lokasi_dan_info_hutan'); // get data
             <div class="card lokasi">
                 <?= $dt['link_maps'] ?>
                 <div class="card-body">
-                    <a href="#" class="card-title"><?= $dt['nama_hutan_lindung'] ?></a>
+                    <a href="lokasi.php?id=<?= $dt['id'] ?>" class="card-title"><?= $dt['nama_hutan_lindung'] ?></a>
                 </div>
             </div>
         </div>
@@ -46,5 +46,23 @@ $result = getAllData('lokasi_dan_info_hutan'); // get data
     </div>
 
 </div>
+
+<script>
+    
+const hutan = document.querySelectorAll('.card-title');
+const modal_title = document.getElementById('modal-title');
+const modal_body = document.querySelector('.modal-body');
+
+console.log(modal_body);
+
+hutan.forEach((h)=> {
+    h.addEventListener('click', ()=> {
+        modal_title.innerHTML = h.innerHTML;
+        const map = h.parentElement.previousElementSibling;
+        modal_body.append(map);
+    });
+});
+
+</script>
 
 <?php require_once 'templates/footer.php' ?>

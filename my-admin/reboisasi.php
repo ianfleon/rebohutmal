@@ -3,9 +3,8 @@ session_start();
 require 'templates/header.php';
 require '../functions.php';
 
-// ambil data reboisasi dari database
+/* ambil data reboisasi dari database */
 $dataReboisasi = getAllData('reboisasi');
-// akhir
 
 ?>
 
@@ -13,7 +12,7 @@ $dataReboisasi = getAllData('reboisasi');
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800 mt-5">Reboisasi</h1>
+    <h5 class="mt-4">Reboisasi</h5>
     <hr>
     <div class="row">
         <div class="col-md">
@@ -53,7 +52,7 @@ $dataReboisasi = getAllData('reboisasi');
                               <th scope="col">Jenis Bibit</th>
                               <th scope="col">Jumlah Bibit</th>
                               <th scope="col">Tanggal</th>
-                              <th colspan="2" class="text-center">Aksi</th>
+                              <th colspan="2">Aksi</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -63,10 +62,17 @@ $dataReboisasi = getAllData('reboisasi');
                                 <td><?= $no++; ?></td>
                                 <td><?= $dr['nama_hutan']; ?></td>
                                 <td><?= $dr['jenis_kerusakan']; ?></td>
-                                <td><?= $dr['jenis_bibit']; ?></td>
+                                <td>
+                                    <ul>
+                                      <?php $jb = explode('-', $dr['jenis_bibit']); ?>
+                                      <?php foreach ($jb as $j) : ?>
+                                        <li><?= $j ?></li>
+                                      <?php endforeach; ?>
+                                    </ul>    
+                                </td>
                                 <td><?= $dr['jumlah_bibit']; ?></td>
                                 <td><?= $dr['tanggal']; ?></td>
-                                <td class="text-center">
+                                <td>
                                     <a href="hapus.php?id=<?= $dr['id'] ?>&table=reboisasi" class="btn btn-warning btn-sm" onclick="return confirm('Hapus?')"><i class="fas fa-trash-restore"></i> Hapus</a>
                                 </td>
                                 <td class="text-center">

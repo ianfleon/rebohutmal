@@ -142,13 +142,6 @@ $dataHutan = getAllData('lokasi_dan_info_hutan');
               <td><?= $dt['info'] ?></td>
               <td class="text-center">
                 <a href="hapusDataHutan.php?id=<?=$dt['id'] ?>" class="btn btn-warning btn-sm" onclick="return confirm('Yakin Hapus?')")><i class="fas fa-trash-restore"></i> Hapus</a>
-              </td>
-              <td>
-   <!--              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lokasi" id='btn-ubah-lokasi'>
-                 <i class="fas fa-pen"></i> Ubah
-                </button> -->
-              </td>
-              <td>
                 <a href="pengembangan.php" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Detail</a>
               </td>
             </tr>

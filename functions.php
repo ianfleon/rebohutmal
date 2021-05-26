@@ -1,20 +1,41 @@
 <?php  
 
-// koneksi ke database
+date_default_timezone_set("Asia/Tokyo"); // Setting Timezone
+
+/* Koneksi ke Database */
 $conn = mysqli_connect("localhost", "root", "", "farah_ta");
-// akhir koneksi
+
+/* Query ke Database */
+function my_query($query) {
+	global $conn;
+	return mysqli_query($conn, $query);
+}
+
+/* Query mengambil data */
+function my_query_get($query) {
+
+	$rows = [];
+
+	$result = my_query($query);
+
+	while ( $row = mysqli_fetch_assoc($result) ) {
+		$rows[] = $row;
+	}
+
+	return $rows;
+}
 
 // functions getAllData >> untuk mengambil seluruh data;
 function getAllData($namaTabel, $id = null) {
 
 	global $conn;
 
-	$query =  "SELECT * FROM $namaTabel";
+	$query =  "SELECT * FROM $namaTabel ORDER BY id DESC";
 
 	$rows = [];
 
 	if ($id != null) {
-		$query = "SELECT * FROM $namaTabel WHERE id = '$id'";
+		$query = "SELECT * FROM $namaTabel WHERE id = '$id' ORDER BY id DESC";
 	}
 
 	$result = mysqli_query($conn, $query);
@@ -79,34 +100,41 @@ function tambahDataHutan($data) {
 }
 // akhir function tambah data
 
-/* function tambah data > untuk memasukan data ke database */
-// function reboisasi($data) {
-	
-// 	global $conn;
+/* Function tambah data > untuk memasukan data ke database */
+function reboisasi($data, $id = null, $cmd = null) {
 
-// 	$namaHutan = $data['namaHutan'];
-// 	$jenisKerusakan = $data['jenisKerusakan'];
-// 	$jumlahBibit = $data['jumlahBibit'];
-// 	$jenisBibit = $data['jenisBibit'];
-// 	$tanggal = $data['tanggal'];
+	global $conn;
 
-// 	$jumlahBibitYgDipilih = count($jenisBibit);
+	$namaHutan = $data['namaHutan'];
+	$jenisKerusakan = $data['jenisKerusakan'];
+	$jumlahBibit = $data['jumlahBibit'];
+	$jenisBibit = implode('-', $data['jenisBibit']);
+	// $tanggal = $data['tanggal'];
+	$tanggal = date("Y-m-d");
 
-// 	$c = 0;
+	$query = "INSERT INTO reboisasi VALUES (
+		null, '$namaHutan', '$jenisBibit', '$jumlahBibit', '$jenisKerusakan', '$tanggal'
+	)";
 
-// 	for($x=0; $x<$jumlahBibitYgDipilih; $x++){
+	/* Ubah */
+	if ($cmd == 'ubah') {
 
-// 		$q = mysqli_query($conn,
-// 			"INSERT INTO reboisasi VALUES
-// 			(null, '$namaHutan', '$jenisBibit[$x]', '$jumlahBibit', '$jenisKerusakan', '$tanggal')
-// 		");
+		if ($id != null) {
+			$query = "UPDATE reboisasi SET
+				nama_hutan = '$namaHutan',
+				jenis_bibit = '$jenisBibit',
+				jumlah_bibit = '$jumlahBibit',
+				jenis_kerusakan = '$jenisKerusakan',
+				tanggal = '$tanggal'
+			WHERE id = '$id'
+			";
+		}
+	}
 
-// 		if ( $q ) { $c = $c + 1; }
+	my_query($query);
 
-// 	}
-
-// 	return $c;
-// }
+	return mysqli_affected_rows($conn);
+}
 // akhir function tambah data
 
 // function hapus >> untuk menghapus data berdasarkan id yang dikirm
@@ -117,9 +145,62 @@ function hapus($id, $namaTabel) {
 // akhir function hapus
 
 // function cari data
-function cari($namaTabel,$keyword) {
+function cari($namaTabel, $keyword) {
 	global $conn;
 	$result = mysqli_query($conn, "SELECT * FROM $namaTabel WHERE nama LIKE'%$keyword%' OR email LIKE '%$keyword%'");
 	return $result;
 }
 // akhir function cari
+
+/* Berita */
+function berita($data, $gambar) {
+
+	$img = uploadGambar($gambar['img-cover']);
+
+	$judul = $data['judul'];
+	$isi = $data['isi-berita'];
+	$tanggal = date("Y-m-d");
+
+	if (!$img['status']) {
+		echo "Gagal Upload Berita!";
+		header("Refresh:2, url='berita.php'");
+		die();
+	}
+
+	$cover = $img['nama_baru'];
+	$query = "INSERT INTO berita VALUES (null, '$judul', '$isi', '$tanggal', '$cover')";
+
+	return my_query($query);
+
+}
+
+/* Prosesing Gambar */
+function uploadGambar($gambar) {
+
+    $nama = $gambar['name'];
+    $tipe = $gambar['type'];
+    $lokasi_tmp = $gambar['tmp_name'];
+    $error = $gambar['error'];
+    $size = $gambar['size'];
+
+    $nama_ex = explode('.', $nama);
+
+    $eksetensi = end($nama_ex);
+
+    $nama = uniqid() . "." . $eksetensi;
+
+    $dir = '../assets/thumbnails/';
+
+    if (!is_dir($dir) ) {
+        mkdir($dir);
+    }
+
+    $v['status'] = move_uploaded_file($lokasi_tmp, $dir . $nama);
+
+    if ($v['status']) {
+        $v['nama_baru'] = $nama;
+    }
+
+    return $v;
+
+}

@@ -1,22 +1,23 @@
-<?php 
-  require "templates/header.php";
+<?php
   // require "../functions.php";
 
-if( isset($_POST['submit']) ) {
-  $tahun = $_POST['tahun'];
-  $bulan = $_POST['bulan'];
-  $tahun .='-';
-  $tahun .=$bulan;
-  $laporan = getDataLaporan($tahun);
-}
-
+// if( isset($_POST['submit']) ) {
+//   $tahun = $_POST['tahun'];
+//   $bulan = $_POST['bulan'];
+//   $tahun .='-';
+//   $tahun .=$bulan;
+//   $laporan = getDataLaporan($tahun);
+// }
 
 ?>
+
+<?php require_once 'templates/header.php' ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800 mt-3">Laporan </h1>
+  <h5 class="mt-4">Laporan</h5>
   <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
   <hr>  

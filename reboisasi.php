@@ -52,14 +52,22 @@ if( isset($_POST['submit']) )
                 <option value="HL Gung Salela">HL Gung Salela</option>
                 <option value="HL Gunung Baleu">HL Gunung Baleu</option>
             </select>
-      </div>
+        </div>
+        <div class="mb-3">
+            <label for="jenisKerusakan" class="form-label">Jenis Kerusakan</label>
+            <select class="form-select" aria-label="Default select example" name="jenisKerusakan" id="jenisKerusakan">
+                <option selected>-- Pilih Jenis Kerusakan --</option>
+                <option value="Kebakaran">Kebakaran</option>
+                <option value="Penebangan liar">Penebangan Liar</option>
+            </select>
+        </div>
     <div class="mb-3">
         <label for="jenisBibit" class="form-label">Jenis bibit</label>
             <table class="table table-bordered">
                 <tr>
                     <td>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="jenisBibit[]" value="kayu Merah">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="jenisBibit[]" value="Kayu Merah">
                             <label class="form-check-label" for="exampleCheck1">Kayu Merah</label>
                         </div>
 
@@ -126,19 +134,11 @@ if( isset($_POST['submit']) )
         <input type="number" class="form-control" id="jumlah_tanaman" value="number" name="jumlahBibit">
         <div class="form-text">Jumlah bibit yang dibutuhkan.</div>
     </div>
-    <div class="mb-3">
-        <label for="jenisKerusakan" class="form-label">Jenis Kerusakan</label>
-        <select class="form-select" aria-label="Default select example" name="jenisKerusakan" id="jenisKerusakan">
-            <option selected>-- Pilih Jenis Kerusakan --</option>
-            <option value="Kebakaran">Kebakaran</option>
-            <option value="Penebangan liar">Penebangan Liar</option>
-        </select>
-    </div>
-    <div class="mb-3">
-            <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="date" class="form-control col-md-2" id="tanggal" name="tanggal">
-            <div class="small text-grey">*tanggal pengiriman data</div>
-        </div>   
+<!--     <div class="mb-3">
+        <label for="tanggal" class="form-label">Tanggal</label>
+        <input type="date" class="form-control col-md-2" id="tanggal" name="tanggal">
+        <div class="small text-grey">*tanggal pengiriman data</div>
+    </div>   --> 
     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
 </form>
 

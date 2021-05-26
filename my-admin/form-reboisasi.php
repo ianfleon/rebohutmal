@@ -1,10 +1,8 @@
 <?php
 
-require '../functions.php';
+require '../functions.php'; // Main Function
 
-// ambil data bibit dari database
-// $result = getAllData('bibit');
-
+/* Ketika Data diedit */
 if (isset($_GET['edit'])) {
 	
 	$id = $_GET['edit'];
@@ -14,32 +12,45 @@ if (isset($_GET['edit'])) {
 
 }
 
-// cek jika tombol submit sudah ditekan
-if( isset($_POST['submit']) ) 
-{
-	// var_dump($_POST);
-	// die();
+/* Cek jika tombol submit sudah ditekan */
+if (isset($_POST['submit'])) {
 
-    $result = reboisasi($_POST);
-
-    global $conn;
-
-    if( mysqli_affected_rows($conn) ) 
-    {
+    if (reboisasi($_POST) > 0) {
         $notifikasi = true;
         echo "
         <meta content='2; url=reboisasi.php' http-equiv='refresh'>
         ";
     }
 }
+
+/* Update */
+if (isset($_POST['update'])) {
+	if (reboisasi($_POST, $_GET['edit'], 'ubah') > 0) {
+		$notifikasi = true;
+        header("Refresh: 2; url='reboisasi.php'");
+	}
+}
+
 ?>
 
 <?php require_once 'templates/header.php' ?>
 
 <div class="container-fluid">
 
+	<!-- notifiksi sukeses -->
+	<?php if( @$notifikasi == true ) : ?>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success" role="alert">
+              Data Reboisasi <strong>berhasil di <?= isset($_GET['edit']) ? "ubah" : "tambah" ?>!</strong>
+            </div>
+        </div>  
+    </div>
+    <?php endif; ?>
+	<!-- akhir -->
+
 	<!-- Page Heading -->
-	<h1 class="h3 mb-4 text-gray-800 mt-5">Form <?= (isset($_GET['edit'])) ? "Ubah" : "Tambah" ?> Data</h1>
+	<h5 class="mt-4">Form <?= (isset($_GET['edit'])) ? "Ubah" : "Tambah" ?> Data Reboisasi</h5>
 	<hr>
 
 	<!-- notifiksi sukeses -->
@@ -149,11 +160,11 @@ if( isset($_POST['submit']) )
 			<input type="number" class="form-control col-md-2" id="jumlahBibit" value="<?= (isset($data['jumlah_bibit'])) ? $data['jumlah_bibit'] : 0 ?>" name="jumlahBibit">
 			<div class="small text-grey">*Jumlah bibit yang dibutuhkan.</div>
 		</div>
-		<div class="mb-4">
+<!-- 		<div class="mb-4">
 			<label for="tanggal" class="form-label">Tanggal</label>
 			<input type="date" class="form-control col-md-2" id="tanggal" value="<?= $data['tanggal'] ?>" name="tanggal">
 			<div class="small text-grey">*Tanggal pengiriman data</div>
-		</div>
+		</div> -->
 		<div class="mb-5 mt-3">
 			<a href="reboisasi.php" class="btn btn-warning">Batal</a>
 			<button type="submit" name="<?= (isset($_GET['edit'])) ? 'update' : 'submit' ?>" class="btn btn-primary">Simpan</button>
@@ -173,6 +184,9 @@ const nama_hutan = document.getElementById('nama-hutan').value;
 const jenis_kerusakan = document.getElementById('jenis-kerusakan').value;
 const jenis_bibit = document.getElementById('jenis-bibit').value;
 
+let jb = jenis_bibit.split("-");
+// console.log(jb);
+
 const s_namaHutan = document.getElementById('select-nama-hutan');
 const s_jenisKerusakan = document.getElementById('select-jenis-kerusakan');
 
@@ -191,9 +205,11 @@ for (let j=0; j<s_jenisKerusakan.length; j++) {
 }
 
 c_jenisBibit.forEach((c)=> {
-	if (c.value == jenis_bibit) {
-		c.setAttribute('checked', '');
-	}
+	jb.forEach((j)=> {
+		if (c.value == j) {
+			c.setAttribute('checked', '');
+		}
+	});
 });
 
 </script>
