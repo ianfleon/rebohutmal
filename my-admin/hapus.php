@@ -1,7 +1,10 @@
-<?php  
+<?php
+
 session_start();
 // tambahkan halaman function
 require '../functions.php';
+
+cek_login(); // cek login
 
 // ambil id dan tabel yang dikirim dari url
 $id = $_GET['id'];

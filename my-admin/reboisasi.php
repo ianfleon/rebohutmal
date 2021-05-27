@@ -1,7 +1,9 @@
 <?php  
-session_start();
+
 require 'templates/header.php';
 require '../functions.php';
+
+cek_login(); // cek login
 
 /* ambil data reboisasi dari database */
 $dataReboisasi = getAllData('reboisasi');

@@ -3,10 +3,14 @@
 /* Main Function */
 require_once '../functions.php';
 
+cek_login(); // cek login
+
 /* Data Kontak */
 date_default_timezone_set("Asia/Tokyo"); // set zona waktu
-$tanggal = date("Y-m-d"); // tanggal hari ini
-// echo $tanggal;
+// $tanggal = date("Y-m-d"); // tanggal hari ini
+
+setlocale (LC_TIME, 'id_ID');
+$tanggal = strftime( "%A, %d %B %Y", time());
 
 // ambil data berdasarkan hari ini
 $kontak = my_query_get("SELECT * FROM kontak WHERE tanggal = '$tanggal'");
@@ -27,7 +31,7 @@ $total['reboisasi'] = count($reboisasi); // menghitung total data yang didapat
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mt-4">
         <h5>Dashboard Admin</h5>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     </div>
     <hr>  
 

@@ -1,12 +1,4 @@
 <?php 
-// jalankan SESSION
-// session_start();
-// // akhir
-// // cek apakah user sudah login atau belum
-//   if( !isset($_SESSION['adminLogin']) ) {
-//     header("Location: login.php");
-//   exit;
-//   }
 
 // tambahkan file header
 require "templates/header.php";
@@ -14,7 +6,8 @@ require "templates/header.php";
 
 // tambahkan file functions.php
 require "../functions.php";
-// akhir
+
+cek_login(); // cek login
 
 //ambil seluruh data kontak masuk dari user
 $result = getAllData('kontak');

@@ -2,6 +2,8 @@
 
 require '../functions.php'; // Main Function
 
+cek_login(); // cek login
+
 /* Ketika Data diedit */
 if (isset($_GET['edit'])) {
 	

@@ -1,19 +1,12 @@
 <?php
 
-// jalankan SESSION
-// session_start();
-// // akhir
-// // cek apakah user sudah login atau belum
-//   if( !isset($_SESSION['adminLogin']) ) {
-//     header("Location: login.php");
-//   exit;
-//   }
-
 // tambahkan file header
 require_once "templates/header.php";
 
 // tambahkan file function
 require_once "../functions.php";
+
+cek_login(); // cek login
 
 // cek jika tombol submit sudah ditekan
 if( isset($_POST['submit']) ) {

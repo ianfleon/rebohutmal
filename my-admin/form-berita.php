@@ -3,6 +3,8 @@
 /* Main Function */
 require '../functions.php';
 
+cek_login(); // cek login
+
 /* Submit */
 if ( isset($_POST['submit']) ) {
 

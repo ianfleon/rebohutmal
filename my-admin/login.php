@@ -1,14 +1,11 @@
 <?php  
-// jalankan SESSION
-session_start();
-// akhir
 
-// cek apakah user sudah login atau belum
-if( isset($_SESSION['adminLogin']) ) {
-  header("Location: index.php", true, 301);
-  exit();
+session_start();
+
+if (isset($_SESSION['admin_logined'])) {
+    // $_SESSION['admin_logined'] = true;
+    header("Location: index.php");
 }
-// akhir
 
 // koneksi ke database
 require '../functions.php';
@@ -16,26 +13,14 @@ require '../functions.php';
 
 
 if( isset($_POST['login']) ) {
-  $username =  htmlspecialchars($_POST['username']);
-  $password = md5($_POST['password']);
-  // cek nomor meter apakah sudah terdaftar atau belum
-   $result = mysqli_query($conn, "SELECT * FROM admin WHERE NIP = '$username' ");
 
-   if( mysqli_num_rows($result)  === 1 ){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-      // cek password
-      $row = mysqli_fetch_assoc($result);
-      if( $password == $row['password']) {
-        $adminLogin = getDataAdmin($username);
-        $_SESSION['adminLogin'] = $adminLogin['NIP'];
-        header("Location: pengaduan.php", true, 301);
-        exit();
-      }else {
-        $error = true;
-      }
-    }else {
-      $error2 = true;
-    } 
+    if ($username == 'admin' && $password == 'admin') {
+        $_SESSION['admin_logined'] = true;
+        header('Location: index.php');
+    }
 
 }
 

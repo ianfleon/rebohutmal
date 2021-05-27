@@ -2,6 +2,8 @@
 
 require_once '../functions.php';
 
+cek_login(); // cek login
+
 $berita = getAllData('berita');
 
 // var_dump($data);

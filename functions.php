@@ -213,3 +213,11 @@ function uploadGambar($gambar) {
     return $v;
 
 }
+
+/* Cek Login */
+function cek_login() {
+	session_start();
+	if (!isset($_SESSION['admin_logined'])) {
+		header("Location: /rebohutmal");
+	}
+}
