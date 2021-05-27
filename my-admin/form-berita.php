@@ -75,7 +75,7 @@ if (isset($_POST['update'])) {
 	<form action="" method="POST" enctype="multipart/form-data">
 
 		<!-- Gambar Sebelumnya (Edit) -->
-		<input type="text" name="gambar-lama" value="<?= (isset($data['cover_berita'])) ? $data['cover_berita'] : "" ?>">
+		<input type="hidden" name="gambar-lama" value="<?= (isset($data['cover_berita'])) ? $data['cover_berita'] : "" ?>">
 
 		<div class="form-group">
 		    <img src="" alt="" id="img-cover" class="view-img">
