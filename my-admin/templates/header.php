@@ -1,7 +1,4 @@
-<?php  
-// require "../functions.php";
-// $jum = query("pengaduan_user");
-// $num = mysqli_num_rows($jum);
+<?php
 
 $title = $_SERVER['REQUEST_URI'];
 $title = explode('/', $title);
@@ -44,14 +41,6 @@ if ($title == 'Index') {
 <!-- Bootstrap JS -->
 <script type="text/javascript" src="assets/my-js/jquery.js"></script>
 <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- JQuery File -->
-<!-- <script src="assets/jQuery/jquery-file.js"></script> -->
-
-<!-- datepicker bootstrap -->
-<!-- <link rel="stylesheet" href="assets/bootstrap/date-picker/css/bootstrap-datepicker.min.css"> -->
-<!-- <script src="assets/bootstrap/date-picker/js/bootstrap-datepicker.min.js"></script> -->
-<!-- <script src="assets/bootstrap/date-picker/locales/bootstrap-datepicker.id.min.js"></script> -->
 
 <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
 
