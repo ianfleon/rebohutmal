@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2021 at 01:25 PM
+-- Generation Time: May 27, 2021 at 02:18 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `farah_ta`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `id` int(11) NOT NULL,
+  `judul_berita` varchar(165) NOT NULL,
+  `isi_berita` text NOT NULL,
+  `waktu_post` date NOT NULL,
+  `cover_berita` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id`, `judul_berita`, `isi_berita`, `waktu_post`, `cover_berita`) VALUES
+(10, 'Sosok Pendongeng Konservasi Keliling, Mundur Jadi Guru demi Selamatkan Hutan dan Satwa Indonesia ', '<p>Sebelum menjadi pendongeng, pria asal Desa Krasak, Indramayu, Jawa Barat itu berprofesi sebagai guru SD. Pada 2014, ia berkesempatan mengunjungi Taman Nasional Ujung Kulon. Sepulang dari sana, Samsudin bertekad agar para siswanya harus memahami upaya konservasi untuk penyelamatan satwa dan hutan di Indonesia.</p><p>Ia menggunakan teknik mendongeng untuk membantu anak-anak memahami pesan yang disampaikan. Acap kali ia mengangkat tema hutan dan satwa yang ada di Indonesia. Namun, ia merasa ruang geraknya terbatas jika hanya bergerak di ruang kelas. Akhirnya, ia mundur sebagai tenaga pengajar dan beralih menjadi pendongeng pada tahun yang sama.</p><p>Semua cerita yang disampaikan oleh Samsudin saat&nbsp;menyampaikan&nbsp;dongeng konservasi merupakan kenyataan&nbsp;yang dia pelajari&nbsp;di lapangan. Sebelum memulai bercerita, biasanya Samsudin melakukan riset tentang tema yang akan dibahas bersama lembaga atau pihak terkait, maupun riset dari literatur.</p><p>&quot;Tujuan saya ingin memberikan pencerahan tentang kondisi hutan dan satwa di Indonesia, berarti hal ini harus sesuai dengan realitas dan berdasarkan kaidah keilmuan bukan hanya cerita fiksi,&quot; jelas Samsudin.</p><p>&quot;Saya menyampaikan poin-poin penting terkait kondisi hutan dan satwa di Indonesia yang dikemas dengan bahasa yang sesuai dan mudah dimengerti oleh pendengar <a href=\"https://www.liputan6.com/health/read/4426159/dongeng-abcd-hiburan-sarat-ilmu-untuk-anak-di-masa-pandemi-covid-19\">dongeng</a>,&quot; tambahnya.</p>', '2021-05-26', '60ad48a52724e.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,21 +89,10 @@ CREATE TABLE `kontak` (
 --
 
 INSERT INTO `kontak` (`id`, `nama`, `email`, `pesan`, `tanggal`) VALUES
-(1, 'Budi', 'budi@gmail.com', 'Tolong lihat hutan saya di seram pak!', '2021-05-24');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lokasi`
---
-
-CREATE TABLE `lokasi` (
-  `id` int(11) NOT NULL,
-  `nama_hutan_lindung` varchar(100) NOT NULL,
-  `link_maps` varchar(255) NOT NULL,
-  `jenis_pohon` varchar(50) NOT NULL,
-  `jenis_satwa` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, 'Budi', 'budi@gmail.com', 'Tolong lihat hutan saya di seram pak!', '2021-05-24'),
+(2, 'Tejo', 'tjo@gmail.com', 'Lihatlah hutan kami di Seram, sudah banyak penebangan liar.', '2021-05-25'),
+(3, 'Koji', 'koji@gmail.com', 'Beri kami pelatihan!', '2021-05-25'),
+(4, 'Yojo', 'yojo@gmail.com', 'Lihat', '2021-05-26');
 
 -- --------------------------------------------------------
 
@@ -125,11 +135,21 @@ CREATE TABLE `reboisasi` (
 --
 
 INSERT INTO `reboisasi` (`id`, `nama_hutan`, `jenis_bibit`, `jumlah_bibit`, `jenis_kerusakan`, `tanggal`) VALUES
-(6, 'HL Gunung Kalapain', 'Kayu Merah', 10, 'Penebangan Liar', '2021-05-24');
+(6, 'HL Gunung Kalapain', 'Kayu Merah', 10, 'Penebangan Liar', '2021-05-24'),
+(7, 'HL Nakabata', 'Kayu Merah-Bintanggur', 100, 'Kebakaran', '2021-05-26'),
+(8, 'HL Nakabata', 'Kayu Merah-Bintanggur', 100, 'Kebakaran', '2021-05-26'),
+(10, 'HL Nakabata', 'Kayu Merah-Bintanggur-Makila', 15, 'Penebangan Liar', '2021-05-26'),
+(12, 'HL Yala', 'Kayu Merah-Makila-Manggis Hutan-Halaor-Kayu Burung-Matoa', 90, 'Penebangan Liar', '2021-05-26');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bibit`
@@ -141,12 +161,6 @@ ALTER TABLE `bibit`
 -- Indexes for table `kontak`
 --
 ALTER TABLE `kontak`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `lokasi`
---
-ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -166,6 +180,12 @@ ALTER TABLE `reboisasi`
 --
 
 --
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `bibit`
 --
 ALTER TABLE `bibit`
@@ -175,13 +195,7 @@ ALTER TABLE `bibit`
 -- AUTO_INCREMENT for table `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `lokasi`
---
-ALTER TABLE `lokasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `lokasi_dan_info_hutan`
@@ -193,7 +207,7 @@ ALTER TABLE `lokasi_dan_info_hutan`
 -- AUTO_INCREMENT for table `reboisasi`
 --
 ALTER TABLE `reboisasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
