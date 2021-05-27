@@ -144,14 +144,6 @@ function hapus($id, $namaTabel) {
 }
 // akhir function hapus
 
-// function cari data
-function cari($namaTabel, $keyword) {
-	global $conn;
-	$result = mysqli_query($conn, "SELECT * FROM $namaTabel WHERE nama LIKE'%$keyword%' OR email LIKE '%$keyword%'");
-	return $result;
-}
-// akhir function cari
-
 /* Berita */
 function berita($data, $gambar, $id = null, $cmd = null) {
 

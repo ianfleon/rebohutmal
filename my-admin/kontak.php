@@ -19,14 +19,15 @@ require "../functions.php";
 //ambil seluruh data kontak masuk dari user
 $result = getAllData('kontak');
 
-$total = count($result);
-
 //  cari data kontak
 if( isset($_POST['cari']) ) {
     $keyword = htmlspecialchars($_POST['keyword']);
-    $r = mysqli_fetch_assoc(cari("kontak", $keyword));
-    $total = count($r);
+    $result = my_query_get("SELECT * FROM kontak WHERE nama LIKE '%$keyword%'");
+    // var_dump($result);
+    // $total = count($data);
 }
+
+$total = count($result);
  
 ?>
 <!-- Begin Page Content -->
@@ -55,15 +56,16 @@ if( isset($_POST['cari']) ) {
         <p>Total Data : <?= ($total != null) ? $total : "-" ?><span class="text-primary"></p>
       </div>
     </div>
+    
   <!-- tampilkan pesan tidak ada pengaduan terbaru -->
-  <!-- <?php if( isset($error ) ): ?> -->
+  <?php if( $total < 1 ) : ?>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <strong>Tidak ada pengaduan terbaru !</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-  <!-- <?php endif; ?> -->
+  <?php endif; ?>
   <!-- akhir pesan -->
 
   <!-- content -->
@@ -81,20 +83,11 @@ if( isset($_POST['cari']) ) {
           </tr>
         </thead>
         <tbody>
-          <?php if( isset($_POST['cari'] ) ): ?>
           <div class="row">
           	<div class="col-sm-3 mb-2">
           		<a href="kontak.php" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left"></i> Kembali</a>
           	</div>
           </div>
-          <tr>
-            <td scope="row"><?= 1; ?></td>
-            <td><?= $r['nama'] ?></td>
-            <td><?= $r['email'] ?></td>
-            <td><?= $r['pesan'] ?></td>
-            <td><?= $r['tanggal'] ?></td>
-          </tr>
-          <?php else : ?>
           <?php $noUrut = 1; ?>
           <?php foreach ($result as $row):?>
           <tr>
@@ -108,7 +101,6 @@ if( isset($_POST['cari']) ) {
           </tr>
           <?php $noUrut++; ?>
           <?php endforeach; ?>
-          <?php endif; ?>
           </tbody>
         </table>
       </div>

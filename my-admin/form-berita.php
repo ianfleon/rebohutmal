@@ -78,7 +78,7 @@ if (isset($_POST['update'])) {
 		<input type="hidden" name="gambar-lama" value="<?= (isset($data['cover_berita'])) ? $data['cover_berita'] : "" ?>">
 
 		<div class="form-group">
-		    <img src="" alt="" id="img-cover" class="view-img">
+		    <img src="../assets/<?= (isset($data['cover_berita'])) ? 'thumbnails/' . $data['cover_berita'] : "img/no-image.jpg" ?>" alt="" id="img-cover" class="view-img">
 		    <br>
 		    <label for="foto">Gambar Cover</label>
 		    <input type="file" class="form-control col-md-3" name="img-cover" accept="image/*" onchange="preview_image(event)">
