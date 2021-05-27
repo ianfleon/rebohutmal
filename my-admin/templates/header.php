@@ -3,11 +3,12 @@
 $title = $_SERVER['REQUEST_URI'];
 $title = explode('/', $title);
 $title = $title[count($title) - 1];
-$title = substr($title, 0, strpos($title, '.php'));
-$title[0] = strtoupper($title);
 
-if ($title == 'Index') {
-  $title = "Beranda";
+if ($title == 'Index' || $title == '') {
+    $title = "Beranda";
+} else {
+    $title = substr($title, 0, strpos($title, '.php'));
+    $title[0] = strtoupper($title);
 }
 
 ?>

@@ -51,11 +51,11 @@ $berita = my_query_get("SELECT * FROM berita");
 
     </div>
 
-    <div class="row mb-5 text-center">
+    <!-- <div class="row mb-5 text-center">
         <div class="col-md-12">
             <button class="btn btn-success">Lainnya</button>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <script src="script.js"></script>

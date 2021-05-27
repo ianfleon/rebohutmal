@@ -39,11 +39,11 @@ $result = getAllData('lokasi_dan_info_hutan'); // get data
       <?php endforeach; ?>
     </div>
 
-    <div class="row mb-5 text-center">
+    <!-- <div class="row mb-5 text-center">
         <div class="col-md-12">
             <button class="btn btn-success">Lainnya</button>
         </div>
-    </div>
+    </div> -->
 
 </div>
 
