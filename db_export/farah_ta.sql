@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 01:50 PM
+-- Generation Time: May 30, 2021 at 02:11 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -145,20 +145,16 @@ CREATE TABLE `reboisasi` (
   `jenis_bibit` varchar(100) NOT NULL,
   `jumlah_bibit` int(50) NOT NULL,
   `jenis_kerusakan` varchar(50) NOT NULL,
-  `tanggal` date NOT NULL
+  `tanggal` date NOT NULL,
+  `pengadu` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reboisasi`
 --
 
-INSERT INTO `reboisasi` (`id`, `nama_hutan`, `jenis_bibit`, `jumlah_bibit`, `jenis_kerusakan`, `tanggal`) VALUES
-(6, 'HL Gunung Kalapain', 'Kayu Merah', 10, 'Penebangan Liar', '2021-05-24'),
-(7, 'HL Nakabata', 'Kayu Merah-Bintanggur', 100, 'Kebakaran', '2021-05-26'),
-(8, 'HL Nakabata', 'Kayu Merah-Bintanggur', 100, 'Kebakaran', '2021-05-26'),
-(10, 'HL Nakabata', 'Kayu Merah-Bintanggur-Makila', 15, 'Penebangan Liar', '2021-05-26'),
-(12, 'HL Yala', 'Kayu Merah-Makila-Manggis Hutan-Halaor-Kayu Burung-Matoa', 90, 'Penebangan Liar', '2021-05-26'),
-(13, '', '', 0, '', '2021-05-30');
+INSERT INTO `reboisasi` (`id`, `nama_hutan`, `jenis_bibit`, `jumlah_bibit`, `jenis_kerusakan`, `tanggal`, `pengadu`) VALUES
+(14, 'HL Yala', 'Kayu Merah', 100, 'Penebangan liar', '2021-05-30', 'Budi');
 
 -- --------------------------------------------------------
 
@@ -256,7 +252,7 @@ ALTER TABLE `lokasi_dan_info_hutan`
 -- AUTO_INCREMENT for table `reboisasi`
 --
 ALTER TABLE `reboisasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
