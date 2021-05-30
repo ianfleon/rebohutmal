@@ -117,9 +117,10 @@ function reboisasi($data, $id = null, $cmd = null) {
 	$jenisBibit = implode('-', $data['jenisBibit']);
 	// $tanggal = $data['tanggal'];
 	$tanggal = date("Y-m-d");
+	$pengadu = $data['pengadu'];
 
 	$query = "INSERT INTO reboisasi VALUES (
-		null, '$namaHutan', '$jenisBibit', '$jumlahBibit', '$jenisKerusakan', '$tanggal'
+		null, '$namaHutan', '$jenisBibit', '$jumlahBibit', '$jenisKerusakan', '$tanggal', '$pengadu'
 	)";
 
 	/* Ubah */

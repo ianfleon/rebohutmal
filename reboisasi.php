@@ -67,6 +67,9 @@ if( isset($_POST['submit']) )
     </div>
 
     <form action="" method="post">
+
+        <input type="hidden" value="<?= $_SESSION['user_logined'] ?>" name="pengadu">
+
         <div class="mb-3">
             <label for="nama_hutan" class="form-label">Nama Hutan</label>
             <select <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> class="form-control" id="exampleFormControlSelect1" name="namaHutan">

@@ -16,11 +16,11 @@ $dataReboisasi = getAllData('reboisasi');
     <!-- Page Heading -->
     <h5 class="mt-4">Reboisasi</h5>
     <hr>
-    <div class="row">
+<!--     <div class="row">
         <div class="col-md">
             <a href="form-reboisasi.php" class="btn btn-primary" id="tambahDataReboisasi"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
-    </div>
+    </div> -->
 
     <!-- jalankan notifikasi hapus jika true -->
     <?php if( @$notifikasi == true ) : ?>
@@ -54,7 +54,7 @@ $dataReboisasi = getAllData('reboisasi');
                               <th scope="col">Jenis Bibit</th>
                               <th scope="col">Jumlah Bibit</th>
                               <th scope="col">Tanggal</th>
-                              <th colspan="2">Aksi</th>
+                              <th colspan="2">Pengadu</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -74,12 +74,13 @@ $dataReboisasi = getAllData('reboisasi');
                                 </td>
                                 <td><?= $dr['jumlah_bibit']; ?></td>
                                 <td><?= $dr['tanggal']; ?></td>
-                                <td>
+                                <td><?= $dr['pengadu']; ?></td>
+<!--                                 <td>
                                     <a href="hapus.php?id=<?= $dr['id'] ?>&table=reboisasi" class="btn btn-warning btn-sm" onclick="return confirm('Hapus?')"><i class="fas fa-trash-restore"></i> Hapus</a>
-                                </td>
-                                <td class="text-center">
+                                </td> -->
+  <!--                               <td class="text-center">
                                     <a href="form-reboisasi.php?edit=<?= $dr['id'] ?>" class="btn btn-primary btn-sm"><i class="far fa-edit"></i> Ubah</a>
-                                </td>
+                                </td> -->
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
