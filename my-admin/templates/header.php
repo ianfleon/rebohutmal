@@ -133,7 +133,7 @@ if ($title == 'Index' || $title == '') {
       <!-- garis horizontal -->
       <hr class="sidebar-divider d-none d-md-block">
       <li class="nav-item">
-        <a class="nav-link" href="logout.php">
+        <a class="nav-link" href="../logout.php">
           <i class="fas fa-fw fa-sign-out-alt"></i>
           <span>Logout</span>
         </a>
