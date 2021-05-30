@@ -52,6 +52,11 @@ $title[0] = strtoupper($title);
             <li class="nav-item">
             <a class="nav-link" href="kontak.php">Kontak</a>
             </li>
+            <?php if (isset($_SESSION['user_logined'])) : ?>
+            <li class="nav-item">
+            <a class="nav-link" href="logout.php">Logout</a>
+            </li>
+            <?php endif; ?>
         </ul>
         </div>
     </div>
