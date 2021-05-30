@@ -74,7 +74,7 @@ if ($title == 'Index' || $title == '') {
         <div class="sidebar-brand-text mx-3">Rebohutmal</div>
       </a>
 
-      <!-- garis horizontal -->
+
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
@@ -85,7 +85,7 @@ if ($title == 'Index' || $title == '') {
         </a>
       </li>
 
-      <!-- garis horizontal -->
+
       <hr class="sidebar-divider">
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -97,7 +97,7 @@ if ($title == 'Index' || $title == '') {
           <span>Lokasi</span>
         </a>
       </li>
-      <!-- garis horizontal -->
+      
       <hr class="sidebar-divider d-none d-md-block">
       <!-- Nav Item -  -->
       <li class="nav-item">
@@ -106,7 +106,7 @@ if ($title == 'Index' || $title == '') {
           <span>Reboisasi</span>
         </a>
       </li>
-      <!-- garis horizontal -->
+      
       <hr class="sidebar-divider d-none d-md-block">
       <li class="nav-item">
         <a class="nav-link" href="kontak.php">
@@ -114,7 +114,7 @@ if ($title == 'Index' || $title == '') {
           <span>Kontak</span>
         </a>
       </li>
-      <!-- garis horizontal -->
+      
       <hr class="sidebar-divider d-none d-md-block">
       <li class="nav-item">
         <a class="nav-link" href="berita.php">
@@ -122,15 +122,15 @@ if ($title == 'Index' || $title == '') {
           <span>Berita</span>
         </a>
       </li>
-      <!-- garis horizontal -->
-     <!--  <hr class="sidebar-divider d-none d-md-block">
+      
+      <hr class="sidebar-divider d-none d-md-block">
       <li class="nav-item">
         <a class="nav-link" href="laporan.php">
           <i class="fas fa-fw fa-print"></i>
           <span>Laporan</span>
         </a>
-      </li> -->
-      <!-- garis horizontal -->
+      </li>
+      
       <hr class="sidebar-divider d-none d-md-block">
       <li class="nav-item">
         <a class="nav-link" href="../logout.php">
