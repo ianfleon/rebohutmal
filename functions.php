@@ -228,3 +228,17 @@ function cek_login() {
 		header("Location: login.php");
 	}
 }
+
+/* Cetak data reboisasi */
+function cetak_data($dari, $sampai) {
+	$hasil = my_query_get("SELECT * FROM reboisasi WHERE tanggal >= '$dari' AND tanggal <= '$sampai'");
+	return $hasil;
+}
+
+function cetak($html) {
+	require_once __DIR__ . '/my-admin/assets/mpdf/vendor/autoload.php';
+
+	$mpdf = new \Mpdf\Mpdf();
+	$mpdf->WriteHTML($html);
+	$mpdf->Output();
+}
