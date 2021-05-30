@@ -11,6 +11,12 @@ function my_query($query) {
 	return mysqli_query($conn, $query);
 }
 
+function my_query_set($query) {
+	global $conn;
+	mysqli_query($conn, $query);
+	return mysqli_affected_rows($conn);
+}
+
 /* Query mengambil data */
 function my_query_get($query) {
 
