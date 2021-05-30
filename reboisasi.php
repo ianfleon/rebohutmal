@@ -1,11 +1,19 @@
 <?php  
-// panggil file header_index.php
+
+session_start();
+
 require "templates/header.php";
 require "functions.php";
 
 // cek jika tombol kirim sudah ditekan, jalankan function
 if( isset($_POST['submit']) )
 {
+
+    if (!isset($_SESSION['user_logined'])) {
+        header("Location: reboisasi.php");
+        die();
+    }
+
     global $conn;
 
     $result = reboisasi($_POST);
@@ -24,6 +32,26 @@ if( isset($_POST['submit']) )
 <!-- Form Reboisasi -->
 <div class="container mt-5 mb-5">
 
+    <?php if( !isset($_SESSION['user_logined']) ) : ?>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success" role="alert">
+              Silahlan <strong><a href="login.php">Login</a></strong> untuk dapat mengirim permintaan.
+            </div>
+        </div>  
+    </div>
+    <?php endif; ?>
+
+    <?php if( isset($_SESSION['user_logined']) ) : ?>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success" role="alert">
+              Hai <strong><?= $_SESSION['user_logined'] ?>.</strong> Silahkan melakukan pengajuan!
+            </div>
+        </div>  
+    </div>
+    <?php endif; ?>
+
     <?php if( @$notifikasi == true ) : ?>
     <div class="row">
         <div class="col">
@@ -33,6 +61,7 @@ if( isset($_POST['submit']) )
         </div>  
     </div>
     <?php endif; ?>
+    
     <div class="row text-center mb-3">
         <h4>Form Reboisasi</h4>
     </div>
@@ -40,7 +69,7 @@ if( isset($_POST['submit']) )
     <form action="" method="post">
         <div class="mb-3">
             <label for="nama_hutan" class="form-label">Nama Hutan</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="namaHutan">
+            <select <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> class="form-control" id="exampleFormControlSelect1" name="namaHutan">
                 <option>-- Pilih Hutan Lindung --</option>
                 <option value="HL Gn Tipukekene">HL Gn Tipukekene</option>
                 <option value="HL Nakabata">HL Nakabata</option>
@@ -55,7 +84,7 @@ if( isset($_POST['submit']) )
         </div>
         <div class="mb-3">
             <label for="jenisKerusakan" class="form-label">Jenis Kerusakan</label>
-            <select class="form-select" aria-label="Default select example" name="jenisKerusakan" id="jenisKerusakan">
+            <select <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> class="form-select" aria-label="Default select example" name="jenisKerusakan" id="jenisKerusakan">
                 <option selected>-- Pilih Jenis Kerusakan --</option>
                 <option value="Kebakaran">Kebakaran</option>
                 <option value="Penebangan liar">Penebangan Liar</option>
@@ -67,35 +96,35 @@ if( isset($_POST['submit']) )
                 <tr>
                     <td>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="jenisBibit[]" value="Kayu Merah">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck1" name="jenisBibit[]" value="Kayu Merah">
                             <label class="form-check-label" for="exampleCheck1">Kayu Merah</label>
                         </div>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck2" name="jenisBibit[]" value="Bintanggur">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck2" name="jenisBibit[]" value="Bintanggur">
                             <label class="form-check-label" for="exampleCheck2">Bintanggur</label>
                         </div>
 
                     </td>
                     <td>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck3" name="jenisBibit[]" value="Makila">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck3" name="jenisBibit[]" value="Makila">
                             <label class="form-check-label" for="exampleCheck3">Makila</label>
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck4" name="jenisBibit[]" value="Nani Air">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck4" name="jenisBibit[]" value="Nani Air">
                             <label class="form-check-label" for="exampleCheck4">Nani Air</label>
                         </div>
                     </td>
                     <td>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck5" name="jenisBibit[]" value="Siki">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck5" name="jenisBibit[]" value="Siki">
                             <label class="form-check-label" for="exampleCheck5">Siki</label>
                         </div>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck6" name="jenisBibit[]" value="Meranti">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck6" name="jenisBibit[]" value="Meranti">
                             <label class="form-check-label" for="exampleCheck6">Meranti</label>
                         </div>
 
@@ -103,12 +132,12 @@ if( isset($_POST['submit']) )
                     <td>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck7" name="jenisBibit[]" value="Manggis Hutan">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck7" name="jenisBibit[]" value="Manggis Hutan">
                             <label class="form-check-label" for="exampleCheck7">Manggis Hutan</label>
                         </div>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck8" name="jenisBibit[]" value="Halaor">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck8" name="jenisBibit[]" value="Halaor">
                             <label class="form-check-label" for="exampleCheck8">Halaor</label>
                         </div>
                         
@@ -116,12 +145,12 @@ if( isset($_POST['submit']) )
                     <td>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck9" name="jenisBibit[]" value="Kayu Burung">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck9" name="jenisBibit[]" value="Kayu Burung">
                             <label class="form-check-label" for="exampleCheck9">Kayu Burung</label>
                         </div>
 
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck10" name="jenisBibit[]" value="Matoa">
+                            <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="checkbox" class="form-check-input" id="exampleCheck10" name="jenisBibit[]" value="Matoa">
                             <label class="form-check-label" for="exampleCheck10">Matoa</label>
                         </div>
                         
@@ -131,7 +160,7 @@ if( isset($_POST['submit']) )
     </div>
     <div class="mb-3 col-md-4">
         <label for="jumlah_tanaman" class="form-label">Jumlah Bibit</label>
-        <input type="number" class="form-control" id="jumlah_tanaman" value="number" name="jumlahBibit">
+        <input <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> type="number" class="form-control" id="jumlah_tanaman" value="number" name="jumlahBibit">
         <div class="form-text">Jumlah bibit yang dibutuhkan.</div>
     </div>
 <!--     <div class="mb-3">
@@ -139,7 +168,7 @@ if( isset($_POST['submit']) )
         <input type="date" class="form-control col-md-2" id="tanggal" name="tanggal">
         <div class="small text-grey">*tanggal pengiriman data</div>
     </div>   --> 
-    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    <button type="submit" class="btn btn-primary" <?= (!isset($_SESSION['user_logined'])) ? "disabled" : "" ?> name="submit">Submit</button>
 </form>
 
 </div>
