@@ -224,6 +224,6 @@ function uploadGambar($gambar) {
 function cek_login() {
 	session_start();
 	if (!isset($_SESSION['admin_logined'])) {
-		header("Location: /rebohutmal");
+		header("Location: login.php");
 	}
 }
