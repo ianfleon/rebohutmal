@@ -3,13 +3,10 @@
 session_start();
 
 if (isset($_SESSION['admin_logined'])) {
-    // $_SESSION['admin_logined'] = true;
     header("Location: index.php");
 }
 
-// koneksi ke database
-require '../functions.php';
-// akhir
+require '../functions.php'; // main function
 
 
 if( isset($_POST['login']) ) {
@@ -17,10 +14,25 @@ if( isset($_POST['login']) ) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if ($username == 'admin' && $password == 'admin') {
-        $_SESSION['admin_logined'] = true;
-        header('Location: index.php');
+    $cek = my_query_get("SELECT * FROM admin WHERE username = '$username'");
+
+    if ($cek && $cek > 0) {
+        if ($cek[0]['username'] == $username && $cek[0]['password'] == $password) {
+            $_SESSION['admin_logined'] = true;
+            echo "Berhasil login, tunggu sebentar..";
+            header("Refresh: 2; url='login.php'");
+            die();
+        } else {
+            echo "Akun salah, coba lagi!";
+            header("Refresh: 2; url='login.php'");
+            die();
+        }
+    } else {
+        echo "Akun salah, coba lagi!";
+        header("Refresh: 2; url='login.php'");
+        die();
     }
+
 
 }
 
