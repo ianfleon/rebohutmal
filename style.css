@@ -91,9 +91,7 @@ body {
 /* Berita */
 .berita-card .card-img-top {
     border-radius: 0;
-    width: 640px;
     height: auto;
-    /*object-fit: none;*/
 }
 
 .berita-card {

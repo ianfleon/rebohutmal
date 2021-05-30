@@ -7,12 +7,6 @@ function parseDate($date) {
     return intval($dt);
 }
 
-function minifyDate($d, $p = '-') {
-    $dd = explode('-', $d);
-    $hasil = $dd[2] . $p . $dd[1] . $p. $dd[0];
-    return $hasil;
-}
-
 /* Event cetak */
 if (isset($_POST['cetak'])) {
 
@@ -25,9 +19,24 @@ if (isset($_POST['cetak'])) {
         $sampai = $dari;
     }
 
+    /* Cek kesesuaian */
+    if (parseDate($dari) > parseDate($sampai)) {
+        $err_waktu = true;
+    } else {
+        require_once '../functions.php';
+        $data = cetak_data($dari, $sampai);
+        // cetak($hasil);
+    }
+
+    /* Cetak */
+    require_once __DIR__ . '/assets/mpdf/vendor/autoload.php';
+
+    $mpdf = new \Mpdf\Mpdf();
+
+    /* Tabel */
     $html1 = '
         <h2>Laporan Data Reboisasi</h2>
-        <p>Dari: ['. minifyDate($dari, '/').'] Sampai: ['.minifyDate($sampai, '/').']
+        <p>Dari: ['. minify_date($dari, '/').'] Sampai: ['.minify_date($sampai, '/').']
         <table cellpadding="5" cellspacing="0">
             <thead>
                 <tr style="background: black; border: 1px solid black;">
@@ -47,28 +56,14 @@ if (isset($_POST['cetak'])) {
         </table>
     ';
 
-
-    /* Cek kesesuaian */
-    if (parseDate($dari) > parseDate($sampai)) {
-        $err_waktu = true;
-    } else {
-        require_once '../functions.php';
-        $data = cetak_data($dari, $sampai);
-        // cetak($hasil);
-    }
-
-    /* Cetak */
-    require_once __DIR__ . '/assets/mpdf/vendor/autoload.php';
-
-    $mpdf = new \Mpdf\Mpdf();
-
     $mpdf->WriteHTML($html1);
 
     $no = 1;
-
+    
+    /* Isi Tabel */
     foreach($data as $d) {
 
-        $d['tanggal'] = minifyDate($d['tanggal'], '-');
+        $d['tanggal'] = minify_date($d['tanggal'], '-');
 
         $mpdf->WriteHTML('<tr>');
         $mpdf->WriteHTML('<td style="border: .5px solid black;">'.$no.'</td>');
@@ -78,6 +73,7 @@ if (isset($_POST['cetak'])) {
 
         $mpdf->WriteHTML('<td style="border: .5px solid black;">');
 
+        // Looping jenis bibit
         $jb = explode('-', $d['jenis_bibit']);
         foreach ($jb as $b) {
             $mpdf->WriteHTML('<ul>');
@@ -86,11 +82,7 @@ if (isset($_POST['cetak'])) {
         }
 
         $mpdf->WriteHTML('</td>');
-
-        // $mpdf->WriteHTML('<td>'.$d['jenis_bibit'].'</td>');
-
         $mpdf->WriteHTML('<td style="border: .5px solid black;">'.$d['jumlah_bibit'].'</td>');
-        // $mpdf->WriteHTML('<td style="border: .5px solid black;">'.$d['pengadu'].'</td>');
         $mpdf->WriteHTML('</tr>');
 
         $no++;

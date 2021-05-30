@@ -235,10 +235,10 @@ function cetak_data($dari, $sampai) {
 	return $hasil;
 }
 
-function cetak($html) {
-	require_once __DIR__ . '/my-admin/assets/mpdf/vendor/autoload.php';
 
-	$mpdf = new \Mpdf\Mpdf();
-	$mpdf->WriteHTML($html);
-	$mpdf->Output();
+/* Percantik Tampilan Tanggal */
+function minify_date($d, $p = '-') {
+    $dd = explode('-', $d);
+    $hasil = $dd[2] . $p . $dd[1] . $p. $dd[0];
+    return $hasil;
 }

@@ -24,11 +24,11 @@ if (!$data) {
 
 <!-- Berita -->
 <div class="container mt-5 mb-5">
-	<div class="col-md-10 m-auto">
+	<div class="col-md-8 m-auto">
 		<div class="card berita-card">
 		  <div class="card-body">
 		    <h4 class="card-title"><?= $data['judul_berita'] ?></h4>
-		    <p class="text-muted"><?= $data['waktu_post'] ?></p>
+		    <p class="text-muted">Diupload pada tanggal: <?= minify_date($data['waktu_post']) ?></p>
 		    <img src="assets/thumbnails/<?= $data['cover_berita'] ?>" class="card-img-top m-auto mb-3">
 		    <div class="card-text">
 		    	<?= $data['isi_berita'] ?>
