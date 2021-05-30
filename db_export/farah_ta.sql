@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2021 at 02:18 PM
+-- Generation Time: May 30, 2021 at 01:50 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `farah_ta`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`) VALUES
+('admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -139,7 +157,32 @@ INSERT INTO `reboisasi` (`id`, `nama_hutan`, `jenis_bibit`, `jumlah_bibit`, `jen
 (7, 'HL Nakabata', 'Kayu Merah-Bintanggur', 100, 'Kebakaran', '2021-05-26'),
 (8, 'HL Nakabata', 'Kayu Merah-Bintanggur', 100, 'Kebakaran', '2021-05-26'),
 (10, 'HL Nakabata', 'Kayu Merah-Bintanggur-Makila', 15, 'Penebangan Liar', '2021-05-26'),
-(12, 'HL Yala', 'Kayu Merah-Makila-Manggis Hutan-Halaor-Kayu Burung-Matoa', 90, 'Penebangan Liar', '2021-05-26');
+(12, 'HL Yala', 'Kayu Merah-Makila-Manggis Hutan-Halaor-Kayu Burung-Matoa', 90, 'Penebangan Liar', '2021-05-26'),
+(13, '', '', 0, '', '2021-05-30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `nama`, `email`, `password`) VALUES
+(1, 'Budi', 'budi@gmail.com', 'budi'),
+(2, 'Nyongker', 'nyongker@gmail.com', '123'),
+(4, 'Deksa', 'dksa@gmail.com', '123'),
+(5, 'Juki', 'juki@gmail.com', '123'),
+(6, 'Abdu', 'abdu@gmail.com', '123');
 
 --
 -- Indexes for dumped tables
@@ -176,6 +219,12 @@ ALTER TABLE `reboisasi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -207,7 +256,13 @@ ALTER TABLE `lokasi_dan_info_hutan`
 -- AUTO_INCREMENT for table `reboisasi`
 --
 ALTER TABLE `reboisasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
